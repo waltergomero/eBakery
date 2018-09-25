@@ -1,0 +1,70 @@
+﻿@page
+@model eBakery.Web.Razor.Pages.app.Category.AddEditCategoryModel
+@{
+    ViewData["Title"] = "AddEditCategory";
+}
+
+<div class="row">
+    <div class="col-xl-3">
+    </div>
+    <div class="col-xl-6">
+        <div class="card mb-6">
+            <form method="post" class="form-horizontal" id="statusForm">
+                <h6 class="card-header with-elements">
+                    @Model.Title Category Information
+                </h6>
+                <div id="tasks-inner">
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Category.CategoryId" id="CategoryId" class="form-control" />
+                        <div class="form-group required row">
+                            <label class="col-form-label col-sm-3 text-sm-right">Name:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Category.CategoryName" id="txtCategoryName" required class="form-control" maxlength="30" />
+                                <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group required row">
+                            <label class="col-form-label col-sm-3 text-sm-right">Parent Category:</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" asp-for="Category.ParentCategoryId" asp-items="Model.parentCategoryIdSelected">
+                                    <option value="0">[ None ]</option>
+                                </select>
+                                <span asp-validation-for="Category.ParentCategoryId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-sm-3 text-sm-right">Description:</label>
+                            <div class="col-sm-9">
+                                <input asp-for="Category.Description" id="txtDescription" class="form-control" maxlength="120" multiple />
+                            </div>
+                        </div>
+                        @if(Model.Title == "Edit")
+                        {
+                        <div class="form-group  required row">
+                            <label class="col-form-label col-sm-3 text-sm-right">Status:</label>
+                            <div class="col-md-3">
+                                <select  class="form-control" asp-for="Category.StatusId" asp-items="Model.statusIdSelected">
+                                </select>
+                            </div>
+                        </div>
+                        }
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <span style="color:red;" id="spCreateMessage">@Model.Message</span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="m-0">
+                </div>
+                <div class="card-footer" style="text-align:right;">
+                    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-xl-3">
+    </div>
+</div>
+

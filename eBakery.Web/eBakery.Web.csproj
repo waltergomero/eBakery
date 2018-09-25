@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-eBakery.Web-98046A98-5C6F-43E9-B03D-BCB18266E466</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0005" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eBakery.Business\eBakery.Business.csproj" />
+    <ProjectReference Include="..\eBakery.Contracts\eBakery.Contracts.csproj" />
+    <ProjectReference Include="..\eBakery.Infrastructure.BaseClass\eBakery.Infrastructure.BaseClass.csproj" />
+    <ProjectReference Include="..\eBakery.Repository\eBakery.Repository.csproj" />
+    <ProjectReference Include="..\eBakery.UnitsOfWork\eBakery.UnitOfWork.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+  </ItemGroup>
+
+</Project>

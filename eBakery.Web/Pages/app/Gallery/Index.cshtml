@@ -1,0 +1,27 @@
+﻿@page
+@model eBakery.Web.Razor.Pages.app.Gallery.IndexModel
+
+<div id="loadingCategories" style="background-color: cadetblue; display: none">
+    <p>Loading Status...</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info " id="nopcommerce-news-box">
+            <div class="box-header with-border clearfix">
+                <div class="box-title">
+                    <i class="ion-md-images"></i>
+                    Your Photos
+                </div>
+                <div class="box-tools pull-right">
+                    <a asp-page="./UploadImage" asp-route-id="0" class="btn btn-primary btn-sm">Upload Photos</a>
+                </div>
+            </div>
+            <div class="box-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -3,7 +3,55 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBakery.Infrastructure.BaseClass", "eBakery.Infrastructure.BaseClass\eBakery.Infrastructure.BaseClass.csproj", "{6E06EE44-DED3-433D-95DE-DD095EEFAAB8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBakery.Business", "eBakery.Business\eBakery.Business.csproj", "{261A21BE-B487-4698-BE03-D578757A5BDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBakery.Contracts", "eBakery.Contracts\eBakery.Contracts.csproj", "{D1B2D0EF-9FA5-495A-A3FF-45BAEA05110E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBakery.Repository", "eBakery.Repository\eBakery.Repository.csproj", "{2C2EE392-5A29-47B5-9241-C5DF7F0A977F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBakery.UnitOfWork", "eBakery.UnitsOfWork\eBakery.UnitOfWork.csproj", "{BF42A327-92C6-4546-B2DC-E1D5F286E196}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBakery.Api", "eBakery.Api\eBakery.Api.csproj", "{BA7CC837-B16C-44C1-891B-DE2CE5B377A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBakery.Web", "eBakery.Web\eBakery.Web.csproj", "{DE240014-1890-4D27-ABC5-4A699EAB915D}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E06EE44-DED3-433D-95DE-DD095EEFAAB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E06EE44-DED3-433D-95DE-DD095EEFAAB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E06EE44-DED3-433D-95DE-DD095EEFAAB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E06EE44-DED3-433D-95DE-DD095EEFAAB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{261A21BE-B487-4698-BE03-D578757A5BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{261A21BE-B487-4698-BE03-D578757A5BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{261A21BE-B487-4698-BE03-D578757A5BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{261A21BE-B487-4698-BE03-D578757A5BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1B2D0EF-9FA5-495A-A3FF-45BAEA05110E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1B2D0EF-9FA5-495A-A3FF-45BAEA05110E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1B2D0EF-9FA5-495A-A3FF-45BAEA05110E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1B2D0EF-9FA5-495A-A3FF-45BAEA05110E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C2EE392-5A29-47B5-9241-C5DF7F0A977F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2EE392-5A29-47B5-9241-C5DF7F0A977F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2EE392-5A29-47B5-9241-C5DF7F0A977F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2EE392-5A29-47B5-9241-C5DF7F0A977F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF42A327-92C6-4546-B2DC-E1D5F286E196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF42A327-92C6-4546-B2DC-E1D5F286E196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF42A327-92C6-4546-B2DC-E1D5F286E196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF42A327-92C6-4546-B2DC-E1D5F286E196}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA7CC837-B16C-44C1-891B-DE2CE5B377A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7CC837-B16C-44C1-891B-DE2CE5B377A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7CC837-B16C-44C1-891B-DE2CE5B377A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7CC837-B16C-44C1-891B-DE2CE5B377A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE240014-1890-4D27-ABC5-4A699EAB915D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE240014-1890-4D27-ABC5-4A699EAB915D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE240014-1890-4D27-ABC5-4A699EAB915D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE240014-1890-4D27-ABC5-4A699EAB915D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

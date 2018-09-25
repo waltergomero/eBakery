@@ -1,0 +1,184 @@
+﻿@page
+@model eBakery.Web.Razor.Pages.app.Status.IndexModel
+@{
+    ViewData["Title"] = "Status";
+}
+ @Model.Message
+<div id="loadingProducts" style="background-color: cadetblue; display: none">
+    <p>Loading Status...</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info " id="nopcommerce-news-box">
+            <div class="box-header with-border clearfix">
+                <div class="box-title">
+                    <i class="ion ion-ios-aperture"></i>
+                    Status Table
+                </div>
+                <div class="box-tools pull-right">
+                    <a asp-page="./AddEditStatus" asp-route-id="0" class="btn btn-primary btn-sm">Add New</a>
+                </div>
+            </div>
+            <div class="box-body">
+                <table id="tblStatus" class="table table-striped table-bordered dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Status Id</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.status)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StatusId)
+                                </td>
+                                <td>
+                                    <a asp-page="./AddEditStatus" asp-route-id="@item.StatusId">@item.StatusName</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StatusTypeId)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div id="editForm"></div>
+<input type="hidden" id="txtStatusId" value="@ViewBag.StatusId" />
+
+<script>
+    $(function () {
+        var screenWidth, screenHeight, dialogWidth, dialogHeight, isDesktop;
+
+        screenWidth = window.screen.width;
+        screenHeight = window.screen.height;
+        dialogWidth = screenWidth * .30;
+        dialogHeight = screenHeight * .30;
+
+        //jQueryUI method to create dialog box
+        $("#editForm").dialog({
+            autoOpen: false,
+            modal: true,
+            dialogClass: 'dialogClass',
+            width: dialogWidth,
+            position: { my: 'center', at: 'top+150' },
+            buttons: {
+                'Save': function () {
+                    SaveRepairData();
+                },
+                'Cancel': function () { $(this).dialog('close'); }
+            }
+        });
+
+
+        $(".lnkAddEdit").click(function () {
+            var repairId = $(this).attr('id');
+            var pId = $("#txtStatusId").val();
+            var Title = "";
+            if (repairId == 0) {
+                Title = "Add Status Information"
+            }
+            else {
+                Title = "Edit Status Information";
+            }
+            $.ajax({
+                url: "/App/Status/AddEditStatus",
+                data: { RepairId: repairId, PropertyId: pId },
+                type: 'Get',
+                success: function (msg) {
+                    $("#editForm").dialog("open");
+                    $("#editForm").empty().append(msg);
+                    $("#editForm").dialog({
+                        title: Title
+                    });
+                },
+                error: function () {
+                    alert("something seems wrong");
+                }
+            });
+        });
+
+
+        //function SaveRepairData() {
+        //    var repairId = $('#RepairId').val();
+        //    var propertyId = $("#PropertyId").val();
+        //    var ddRequestType = $("#ddRequestType").val();
+        //    var ddUrgency = $("#ddUrgency").val();
+        //    var ddServiceCategory = $("#ddServiceCategory").val();
+        //    var ddProfessionalService = $("#ddProfessionalService").val();
+        //    var description = $("#txtDescription").val();
+        //    var repairReportedDate = $("#txtRepairReportedDate").val();
+        //    var repairCompletedDate = $("#txtRepairCompletedDate").val();
+        //    var technicianName = $("#txtTechnicianName").val();
+        //    var repairCost = $("#txtRepairCost").val();
+        //    var ddPaymentType = $("#ddPaymentType").val();
+        //    var ddStatus = $("#ddStatus").val();
+
+        //    var notes = $("#txtNotes").val();
+        //    if (ddRequestType == "") {
+        //        $.alert("Select request type.", "Warning");
+        //        return false;
+        //    }
+        //    else if (ddUrgency == "") {
+        //        $.alert("Select urgency type.", "Warning");
+        //        return false;
+        //    }
+        //    else if (ddServiceCategory == "") {
+        //        $.alert("Select service type.", "Warning");
+        //        return false;
+        //    }
+        //    else if (ddProfessionalService == "") {
+        //        $.alert("Select professional service.", "Warning");
+        //        return false;
+        //    }
+        //    else if (description == "") {
+        //        $.alert("Enter description of the issue reported.", "Warning");
+        //        return false;
+        //    }
+        //    else if (repairReportedDate == "") {
+        //        $.alert("Enter date when issue was reported.", "Warning");
+        //        return false;
+        //    }
+
+        //    else {
+        //        $.ajax({
+        //            type: 'post',
+        //            url: '/Property/SaveRepairData',
+        //            data: {
+        //                "RepairId": repairId,
+        //                "PropertyId": propertyId,
+        //                "UrgencyId": ddUrgency,
+        //                "RequestTypeId": ddRequestType,
+        //                "ServiceCategoryId": ddServiceCategory,
+        //                "ProfessionalServiceId": ddProfessionalService,
+        //                "Description": description,
+        //                "RepairReportedDate": repairReportedDate,
+        //                "RepairCompletedDate": repairCompletedDate,
+        //                "TechnicianName": technicianName,
+        //                "RepairCost": repairCost,
+        //                "PaymentTypeId": ddPaymentType,
+        //                "Notes": notes,
+        //                "StatusId": ddStatus
+        //            },
+        //            success: function (response) {
+        //                if (response == "") {
+        //                    $("#editForm").dialog("close");
+        //                    window.location.reload();
+        //                }
+        //                else
+        //                    $("#spCreateMessage").text("Some Error has occured Errror!!!");
+        //            }
+        //        });
+        //    }
+        //}
+    });
+
+</script>*@
