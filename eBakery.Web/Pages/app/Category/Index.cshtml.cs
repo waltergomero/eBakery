@@ -20,13 +20,13 @@ namespace eBakery.Web.Razor.Pages.app.Category
         public string Message { get; private set; } = "";
 
 
-        public List<CategoryViewModel> category { get; set; } = new List<CategoryViewModel>();
+        public List<CategoryDisplayViewModel> category { get; set; } = new List<CategoryDisplayViewModel>();
 
         public async Task<IActionResult> OnGet()
         {
             try
             {
-                category = await _categoryUnitOfWork.CategoryList();
+                category = await _categoryUnitOfWork.CategoryDisplayList();
             }
             catch(Exception ex)
             {

@@ -21,22 +21,21 @@ namespace eBakery.Web.Razor.Pages.app.Status
         }
 
         public string Message { get; private set; } = "";
+        public string Title { get; private set; } = "";
 
         [BindProperty]
         public StatusViewModel Status { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int Id = 0)
         {
-            // StatusViewModel _model = new StatusViewModel();
-            //var myViewData = new ViewDataDictionary(new Microsoft.AspNetCore.Mvc.ModelBinding.EmptyModelMetadataProvider(),
-            //                        new Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary());
-            //return new PartialViewResult() { ViewName = "AddEditStatus", ViewData = this.ViewData };
             if (Id == 0)
             {
+                Title = "Add New Status";
                 return Page();
             }
             else
             {
+                Title = "Edit Status Information";
                 Status = await _statusUnitOfWork.StatusById(Id);
                 if (Status == null)
                 {

@@ -8,6 +8,7 @@ namespace eBakery.Contracts.Repositories
     public interface ICategoryRepository
     {
         Task<CategoryModel[]> CategoryList();
+        Task<CategoryDisplayModel[]> CategoryDisplayList();
         Task<CategoryModel> CategoryById(int CategoryId);
         Task SaveCategoryData(int CategoryId, string CategoryName, string Description, int ParentCategoryId, int StatusId);
 

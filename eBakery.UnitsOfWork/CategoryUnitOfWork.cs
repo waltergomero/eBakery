@@ -30,9 +30,29 @@ namespace eBakery.UnitOfWork
                     CategoryId = x.CategoryId,
                     CategoryName = x.CategoryName,
                     Description = x.Description,
-                    CategoryImage = x.CategoryImage,
+                    Picture = x.Picture,
                     ParentCategoryId = x.ParentCategoryId,
                     StatusId = x.StatusId
+                }).ToArray();
+                return categoryItems.ToList();
+            }
+            return null;
+        }
+
+        public async Task<List<CategoryDisplayViewModel>> CategoryDisplayList()
+        {
+            var category = await _categoryService.CategoryDisplayList();
+
+            if (category != null)
+            {
+                var categoryItems = category.Select(x => new CategoryDisplayViewModel
+                {
+                    CategoryId = x.CategoryId,
+                    CategoryName = x.CategoryName,
+                    Description = x.Description,
+                    Picture = x.Picture,
+                    ParentCategoryName = x.ParentCategoryName,
+                    StatusName = x.StatusName
                 }).ToArray();
                 return categoryItems.ToList();
             }
@@ -51,7 +71,7 @@ namespace eBakery.UnitOfWork
                     CategoryId = x.CategoryId,
                     CategoryName = x.CategoryName,
                     Description = x.Description,
-                    CategoryImage = x.CategoryImage,
+                    Picture = x.Picture,
                     ParentCategoryId = x.ParentCategoryId,
                     StatusId = x.StatusId
                 }).ToArray();
@@ -69,7 +89,7 @@ namespace eBakery.UnitOfWork
             cVM.CategoryName = c.CategoryName;
             cVM.Description = c.Description;
             cVM.ParentCategoryId = c.ParentCategoryId;
-            cVM.CategoryImage = c.CategoryImage;
+            cVM.Picture = c.Picture;
             cVM.StatusId = c.StatusId;
 
             return cVM;

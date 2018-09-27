@@ -34,8 +34,30 @@ namespace eBakery.Repository
                     _category.CategoryName = dataReader.GetValueOrDefault<string>("CategoryName");
                     _category.Description = dataReader.GetValueOrDefault<string>("Description");
                     _category.ParentCategoryId = dataReader.GetValueOrDefault<int>("ParentCategoryId");
-                    _category.CategoryImage = dataReader.GetValueOrDefault<string>("CategoryImage");
+                    _category.Picture = dataReader.GetValueOrDefault<string>("Picture");
                     _category.StatusId = dataReader.GetValueOrDefault<int>("StatusId");
+                    category.Add(_category);
+                }
+            }
+            return category.ToArray();
+        }
+
+        public async Task<CategoryDisplayModel[]> CategoryDisplayList()
+        {
+            List<CategoryDisplayModel> category = new List<CategoryDisplayModel>();
+            CategoryDisplayModel _category = null;
+            var parameters = new SqlParameter[0];
+            using (SqlDataReader dataReader = await this.ExecuteReader("usp_CategoryDisplayList", parameters))
+            {
+                while (dataReader.Read())
+                {
+                    _category = new CategoryDisplayModel();
+                    _category.CategoryId = dataReader.GetValueOrDefault<int>("CategoryId");
+                    _category.CategoryName = dataReader.GetValueOrDefault<string>("CategoryName");
+                    _category.Description = dataReader.GetValueOrDefault<string>("Description");
+                    _category.ParentCategoryName = dataReader.GetValueOrDefault<string>("ParentCategoryName");
+                    _category.Picture = dataReader.GetValueOrDefault<string>("Picture");
+                    _category.StatusName = dataReader.GetValueOrDefault<string>("StatusName");
                     category.Add(_category);
                 }
             }

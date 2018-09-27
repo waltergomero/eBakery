@@ -23,7 +23,10 @@ namespace eBakery.Business
             return await _categoryRepository.CategoryList();
 
         }
-
+        public async Task<CategoryDisplayModel[]> CategoryDisplayList()
+        {
+            return await _categoryRepository.CategoryDisplayList();
+        }
         public async Task<CategoryModel> CategoryById(int CategoryId)
         {
             return await _categoryRepository.CategoryById(CategoryId);
