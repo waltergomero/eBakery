@@ -9,6 +9,7 @@ namespace eBakery.UnitOfWork
     public interface ICommonUnitOfWork
     {
         List<SelectListItem> CategoryDropDownList(List<CategoryViewModel> categoryList, string categoryId, string categoryName);
+        List<SelectListItem> StatusDropDownList(List<StatusViewModel> statusList, string statusId, string statusName, int selStatusId);
 
     }
 }

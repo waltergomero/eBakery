@@ -98,6 +98,9 @@ namespace eBakery.Web
             services.AddScoped<IUploadUnitOfWork, UploadUnitOfWork>();
             services.AddScoped<IUploadService, UploadManager>();
             services.AddScoped<IUploadRepository, UploadRepository>();
+            services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
+            services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<IProductRepository, ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -121,7 +124,7 @@ namespace eBakery.Web
             app.UseAuthentication();
 
             app.UseMvc();
-            CreateUserRoles(services).Wait();
+            //CreateUserRoles(services).Wait();
         }
 
         private async Task CreateUserRoles(IServiceProvider serviceProvider)

@@ -1,0 +1,103 @@
+﻿@page
+@model eBakery.Web.Pages.app.Product.AddEditProductModel
+@{
+    ViewData["Title"] = "AddEditProduct";
+}
+
+<h2>AddEditProduct</h2>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card mb-12">
+            <form asp-action="AddEditRepair" method="post" asp-controller="Property" class="form-horizontal" id="repairForm">
+
+                <div id="tasks-inner">
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ProductVM.ProductId" id="ProductId" />
+
+                        <div class="form-group required row">
+                            <label asp-for="ProductVM.ProductName" class="col-md-1 col-form-label">Product Name:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.ProductName" id="txtProductName" class="form-control" required />
+                                <span asp-validation-for="ProductVM.ProductName" class="text-danger"></span>
+                            </div>
+
+                            <label asp-for="ProductVM.ProductCode" class="col-md-1 col-form-label-nrq">Product Code:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.ProductCode" id="txtProductCode" class="form-control" />
+                                <span asp-validation-for="ProductVM.ProductCode" class="text-danger"></span>
+                            </div>
+                            <label asp-for="ProductVM.CategoryId" class="col-md-1 col-form-label-nrq">Category:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.CategoryId" id="txtProductCode" class="form-control" />
+                                <span asp-validation-for="ProductVM.CategoryId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group required row">
+                            <label asp-for="ProductVM.QuantityPerUnit" class="col-md-1 col-form-label">Quantity Per Unit:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.QuantityPerUnit" id="txtQuantityPerUnit" class="form-control" />
+                                <span asp-validation-for="ProductVM.QuantityPerUnit" class="text-danger"></span>
+                            </div>
+
+                            <label asp-for="ProductVM.UnitPrice" class="col-md-1 col-form-label-nrq">Unit Cost:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.UnitPrice" id="txtUnitPrice" class="form-control" />
+                                <span asp-validation-for="ProductVM.UnitPrice" class="text-danger"></span>
+                            </div>
+                            <label asp-for="ProductVM.UnitSalePrice" class="col-md-1 col-form-label-nrq">Unit Sale:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.UnitSalePrice" id="txtUnitSalePrice" class="form-control" />
+                                <span asp-validation-for="ProductVM.UnitSalePrice" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="ProductVM.UnitsInStock" class="col-md-1 col-form-label">Units In Stock:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.UnitsInStock" id="txtUnitsInStock" class="form-control" />
+                                <span asp-validation-for="ProductVM.UnitsInStock" class="text-danger"></span>
+                            </div>
+
+                            <label asp-for="ProductVM.UnitsOnOrder" class="col-md-1 col-form-label-nrq">Units On Order:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.UnitsOnOrder" id="txtUnitsOnOrder" class="form-control" />
+                                <span asp-validation-for="ProductVM.UnitsOnOrder" class="text-danger"></span>
+                            </div>
+                            <label asp-for="ProductVM.ReorderLevel" class="col-md-1 col-form-label-nrq">Reorder Level:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.ReorderLevel" id="txtReorderLevel" class="form-control" />
+                                <span asp-validation-for="ProductVM.ReorderLevel" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="ProductVM.SupplierId" class="col-md-1 col-form-label">Supplier:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.SupplierId" id="txtSupplierId" class="form-control" />
+                                <span asp-validation-for="ProductVM.SupplierId" class="text-danger"></span>
+                            </div>
+
+                            <label asp-for="ProductVM.Discontinued" class="col-md-1 col-form-label-nrq">Discontinued?:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.Discontinued" id="txtDiscontinued" class="form-control" />
+                                <span asp-validation-for="ProductVM.Discontinued" class="text-danger"></span>
+                            </div>
+                            <label asp-for="ProductVM.StatusId" class="col-md-1 col-form-label-nrq">Status:</label>
+                            <div class="col-md-3">
+                                <input asp-for="ProductVM.StatusId" id="txtStatusId" class="form-control" />
+                                <span asp-validation-for="ProductVM.StatusId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <span style="color:red;" id="spCreateMessage">@ViewBag.ErrorMessage</span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="m-0">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

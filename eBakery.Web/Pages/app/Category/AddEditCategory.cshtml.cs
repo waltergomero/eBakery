@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using eBakery.UnitOfWork.ViewModels;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using eBakery.UnitOfWork;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -28,11 +27,11 @@ namespace eBakery.Web.Razor.Pages.app.Category
         public string Title { get; private set; } = "";
 
         [BindProperty]
-        public CategoryViewModel Category { get; set; }
+        public CategoryViewModel CategoryVM { get; set; }
         public List<SelectListItem> statusIdSelected { get; set; }
         public List<SelectListItem> parentCategoryIdSelected { get; set; }
-        public List<StatusViewModel> statusList { get; set; }
-        public List<CategoryViewModel> categoryList { get; set; }
+        public List<StatusViewModel> statusVMList { get; set; }
+        public List<CategoryViewModel> categoryVMList { get; set; }
 
 
         public async Task<IActionResult> OnGetAsync(int Id = 0)
@@ -42,14 +41,14 @@ namespace eBakery.Web.Razor.Pages.app.Category
             if (Id > 0)
             {
                 Title = "Edit";
-                Category = await _categoryUnitOfWork.CategoryById(Id);
-                statusList = await _statusUnitOfWork.StatusList();
+                CategoryVM = await _categoryUnitOfWork.CategoryById(Id);
+                statusVMList = await _statusUnitOfWork.StatusList();
 
-                selParentCategoryId = Category.ParentCategoryId;
+                selParentCategoryId = CategoryVM.ParentCategoryId;
 
-                StatusDropDownList(statusList, "StatusId", "StatusName", Category.StatusId);
+                statusIdSelected = _commonUnitOfWork.StatusDropDownList(statusVMList, "StatusId", "StatusName", CategoryVM.StatusId);
 
-                if (Category == null)
+                if (CategoryVM == null)
                 {
                     Message = "No records found.";
                 }
@@ -59,17 +58,17 @@ namespace eBakery.Web.Razor.Pages.app.Category
                 Title = "Add";
 
             }
-            categoryList = await _categoryUnitOfWork.CategoryList();
-            parentCategoryIdSelected = _commonUnitOfWork.CategoryDropDownList(categoryList, "CategoryId", "CategoryName");
+            categoryVMList = await _categoryUnitOfWork.CategoryList();
+            parentCategoryIdSelected = _commonUnitOfWork.CategoryDropDownList(categoryVMList, "CategoryId", "CategoryName");
 
             return Page();
         }
 
-        public void StatusDropDownList(List<StatusViewModel> statusList, string statusId, string statusName, int selStatusId)
-        {
-            var selectList = new SelectList(statusList, statusId, statusName, selStatusId);
-            statusIdSelected = selectList.ToList();
-        }
+        //public void StatusDropDownList(List<StatusViewModel> statusList, string statusId, string statusName, int selStatusId)
+        //{
+        //    var selectList = new SelectList(statusList, statusId, statusName, selStatusId);
+        //    statusIdSelected = selectList.ToList();
+        //}
 
  
 
@@ -78,11 +77,11 @@ namespace eBakery.Web.Razor.Pages.app.Category
         {
             try
             {
-                    int CategoryId = Category.CategoryId;
-                    string CategoryName = Category.CategoryName;
-                    string Description = Category.Description;
-                    int ParentCategoryId = Category.ParentCategoryId;
-                    int StatusId = Category.StatusId;
+                    int CategoryId = CategoryVM.CategoryId;
+                    string CategoryName = CategoryVM.CategoryName;
+                    string Description = CategoryVM.Description;
+                    int ParentCategoryId = CategoryVM.ParentCategoryId;
+                    int StatusId = CategoryVM.StatusId;
 
                     await this._categoryUnitOfWork.SaveCategoryData(CategoryId, CategoryName, Description, ParentCategoryId, StatusId);
                 return RedirectToPage("./Index");

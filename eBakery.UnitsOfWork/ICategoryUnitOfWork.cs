@@ -11,7 +11,7 @@ namespace eBakery.UnitOfWork
         Task<List<CategoryViewModel>> CategoryList();
         Task<List<CategoryDisplayViewModel>> CategoryDisplayList();
         Task<CategoryViewModel[]> CategoryListArray();
-        Task<CategoryViewModel> CategoryById(int StatusId);
+        Task<CategoryViewModel> CategoryById(int CategoryId);
         Task SaveCategoryData(int CategoryId, string CategoryName, string Description, int ParentCategoryId, int StatusId);
     }
 }

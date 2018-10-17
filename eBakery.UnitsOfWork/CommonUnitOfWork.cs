@@ -64,5 +64,11 @@ namespace eBakery.UnitOfWork
             }
             return result;
         }
+        public List<SelectListItem> StatusDropDownList(List<StatusViewModel> statusList, string statusId, string statusName, int selStatusId)
+        {
+            var selectList = new SelectList(statusList, statusId, statusName, selStatusId);
+            return selectList.ToList();
+        }
+
     }
 }
