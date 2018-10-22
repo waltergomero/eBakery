@@ -41,8 +41,8 @@ namespace eBakery.Web.Razor.Pages.app.Gallery
             _userManager = userManager;
         }
 
-        public List<SelectListItem> SortedCategoryList { get; set; }
-        public List<CategoryViewModel> categoryList { get; set; }
+        public List<SelectListItem> CategoryList { get; set; }
+        public List<CategoryViewModel> categoryListVM { get; set; }
         public int CategoryId { get; set; }
         public string FolderName { get; set; }
 
@@ -53,8 +53,8 @@ namespace eBakery.Web.Razor.Pages.app.Gallery
 
         public async Task<IActionResult> OnGetAsync()
         {
-            categoryList = await _categoryUnitOfWork.CategoryList();
-            SortedCategoryList = _commonUnitOfWork.CategoryDropDownList(categoryList, "CategoryId", "CategoryName");
+            categoryListVM = await _categoryUnitOfWork.CategoryList();
+            CategoryList = _commonUnitOfWork.CategoryDropDownList(categoryListVM, "CategoryId", "CategoryName");
 
             var user = await _userManager.GetUserAsync(User);
             string UserEmail = user.Email;

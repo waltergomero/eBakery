@@ -23,7 +23,7 @@ namespace eBakery.Repository
             List<ProductDisplayModel> product = new List<ProductDisplayModel>();
            ProductDisplayModel _product = null;
             var parameters = new SqlParameter[0];
-            using (SqlDataReader dataReader = await this.ExecuteReader("usp_CategoryDisplayList", parameters))
+            using (SqlDataReader dataReader = await this.ExecuteReader("usp_ProductDisplayList", parameters))
             {
                 while (dataReader.Read())
                 {

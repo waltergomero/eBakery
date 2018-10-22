@@ -27,22 +27,27 @@ namespace eBakery.Web.Pages.app.Product
 
         [BindProperty]
         public ProductViewModel ProductVM { get; set; }
-        public List<StatusViewModel> statusVMList { get; set; }
-        public List<SelectListItem> statusIdSelected { get; set; }
+        public List<StatusViewModel> statusListVM { get; set; }
+        public List<SelectListItem> StatusList { get; set; }
+        public List<SelectListItem> CategoryList { get; set; }
+        public List<CategoryViewModel> categoryListVM { get; set; }
 
         public string Message { get; private set; } = "";
         public string Title { get; private set; } = "";
 
         public async Task<IActionResult> OnGetAsync(int Id = 0)
         {
+            categoryListVM = await _categoryUnitOfWork.CategoryList();
+            CategoryList = _commonUnitOfWork.CategoryDropDownList(categoryListVM, "CategoryId", "CategoryName");
 
             if (Id > 0)
             {
                 Title = "Edit";
                 ProductVM = await _productUnitOfWork.ProductById(Id);
-                statusVMList = await _statusUnitOfWork.StatusList();
+                statusListVM = await _statusUnitOfWork.StatusList();
 
-                statusIdSelected = _commonUnitOfWork.StatusDropDownList(statusVMList, "StatusId", "StatusName", ProductVM.StatusId);
+                StatusList = _commonUnitOfWork.StatusDropDownList(statusListVM, "StatusId", "StatusName", ProductVM.StatusId);
+
 
                 if (ProductVM == null)
                 {

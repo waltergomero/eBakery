@@ -40,7 +40,7 @@ namespace eBakery.Web.Razor.Pages.app.Category
 
             if (Id > 0)
             {
-                Title = "Edit";
+                Title = "Edit Product";
                 CategoryVM = await _categoryUnitOfWork.CategoryById(Id);
                 statusVMList = await _statusUnitOfWork.StatusList();
 
@@ -55,7 +55,7 @@ namespace eBakery.Web.Razor.Pages.app.Category
             }
             else
             {
-                Title = "Add";
+                Title = "Add Product";
 
             }
             categoryVMList = await _categoryUnitOfWork.CategoryList();
