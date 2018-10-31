@@ -85,22 +85,25 @@
                                 <input asp-for="ProductVM.Discontinued" id="txtDiscontinued" class="form-control" />
                                 <span asp-validation-for="ProductVM.Discontinued" class="text-danger"></span>
                             </div>
-                            @if(@Model.Title == "Edit")
+                            @if (@Model.Title == "Edit")
                             {
-                            <label asp-for="ProductVM.StatusId" class="col-md-1 col-form-label-nrq">Status:</label>
-                            <div class="col-md-3">
-                                <select asp-for="ProductVM.StatusId" asp-items="@Model.StatusList" required="required" class="form-control">
-                                </select>
-                            </div>
+                                <label asp-for="ProductVM.StatusId" class="col-md-1 col-form-label-nrq">Status:</label>
+                                <div class="col-md-3">
+                                    <select asp-for="ProductVM.StatusId" asp-items="@Model.StatusList" required="required" class="form-control"></select>
+                                </div>
                             }
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <span style="color:red;" id="spCreateMessage">@ViewBag.ErrorMessage</span>
+                                <span style="color:red;" id="spCreateMessage">@Model.Message</span>
                             </div>
                         </div>
                     </div>
                     <hr class="m-0">
+                </div>
+                <div class="card-footer" style="text-align:right;">
+                    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>

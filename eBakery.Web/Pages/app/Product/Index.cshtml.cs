@@ -20,13 +20,13 @@ namespace eBakery.Web.Pages.app.Product
 
         public string Message { get; private set; } = "";
 
-        public List<ProductDisplayViewModel> category { get; set; } = new List<ProductDisplayViewModel>();
+        public List<ProductDisplayViewModel> productVM { get; set; } = new List<ProductDisplayViewModel>();
 
         public async Task<IActionResult> OnGet()
         {
             try
             {
-                category = await _productUnitOfWork.ProductDisplayList();
+                productVM = await _productUnitOfWork.ProductDisplayList();
             }
             catch (Exception ex)
             {

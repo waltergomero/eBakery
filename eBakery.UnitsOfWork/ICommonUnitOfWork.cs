@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using eBakery.UnitOfWork.ViewModels;
+using System.Threading.Tasks;
 
 namespace eBakery.UnitOfWork
 {
@@ -10,6 +11,7 @@ namespace eBakery.UnitOfWork
     {
         List<SelectListItem> CategoryDropDownList(List<CategoryViewModel> categoryList, string categoryId, string categoryName);
         List<SelectListItem> StatusDropDownList(List<StatusViewModel> statusList, string statusId, string statusName, int selStatusId);
-
+        Task<List<CommonStateListViewModel>> StateList();
+        List<SelectListItem> StateDropDownList(List<CommonStateListViewModel> stateList, string stateId, string stateName, int selStateId);
     }
 }

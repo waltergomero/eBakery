@@ -28,9 +28,10 @@ namespace eBakery.Web.Razor.Pages.app.Category
 
         [BindProperty]
         public CategoryViewModel CategoryVM { get; set; }
+        public List<StatusViewModel> statusVMList { get; set; }
         public List<SelectListItem> statusIdSelected { get; set; }
         public List<SelectListItem> parentCategoryIdSelected { get; set; }
-        public List<StatusViewModel> statusVMList { get; set; }
+    
         public List<CategoryViewModel> categoryVMList { get; set; }
 
 

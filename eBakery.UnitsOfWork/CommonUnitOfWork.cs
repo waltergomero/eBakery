@@ -13,14 +13,13 @@ namespace eBakery.UnitOfWork
     public class CommonUnitOfWork: ICommonUnitOfWork
     {
         private readonly ICategoryService _categoryService;
-
-        public CommonUnitOfWork(ICategoryService categoryService)
+        private readonly ICommonService _commonService;
+        public CommonUnitOfWork(ICommonService commonService, ICategoryService categoryService)
         {
+            _commonService = commonService;
             _categoryService = categoryService;
 
         }
-
-
         public List<SelectListItem> CategoryDropDownList(List<CategoryViewModel> categoryList, string categoryId, string categoryName)
         {
             var selectListSorted = new List<SelectListItem>();
@@ -67,6 +66,29 @@ namespace eBakery.UnitOfWork
         public List<SelectListItem> StatusDropDownList(List<StatusViewModel> statusList, string statusId, string statusName, int selStatusId)
         {
             var selectList = new SelectList(statusList, statusId, statusName, selStatusId);
+            return selectList.ToList();
+        }
+
+        public async Task<List<CommonStateListViewModel>> StateList()
+        {
+            var state = await _commonService.StateList();
+
+            if (state != null)
+            {
+                var stateItems = state.Select(x => new CommonStateListViewModel
+                {
+                    StateId = x.StateId,
+                    StateName = x.StateName,
+                    StateCode = x.StateCode
+                }).ToArray();
+                return stateItems.ToList();
+            }
+            return null;
+        }
+
+        public List<SelectListItem> StateDropDownList(List<CommonStateListViewModel> stateList, string stateId, string stateName, int selStateId)
+        {
+            var selectList = new SelectList(stateList, stateId, stateName, selStateId);
             return selectList.ToList();
         }
 

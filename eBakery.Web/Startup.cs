@@ -95,12 +95,17 @@ namespace eBakery.Web
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICommonUnitOfWork, CommonUnitOfWork>();
+            services.AddScoped<ICommonService, CommonManager>();
+            services.AddScoped<ICommonRepository, CommonRepository>();
             services.AddScoped<IUploadUnitOfWork, UploadUnitOfWork>();
             services.AddScoped<IUploadService, UploadManager>();
             services.AddScoped<IUploadRepository, UploadRepository>();
             services.AddScoped<IProductUnitOfWork, ProductUnitOfWork>();
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ISupplierUnitOfWork, SupplierUnitOfWork>();
+            services.AddScoped<ISupplierService, SupplierManager>();
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

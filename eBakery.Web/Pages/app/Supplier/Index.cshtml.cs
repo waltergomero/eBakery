@@ -1,17 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using eBakery.UnitOfWork;
+using eBakery.UnitOfWork.ViewModels;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace eBakery.Web.Pages.app.Supplier
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
-        {
+        private readonly ISupplierUnitOfWork _supplierUnitOfWork;
 
+        public IndexModel(ISupplierUnitOfWork supplierUnitOfWork)
+        {
+            _supplierUnitOfWork = supplierUnitOfWork;
+        }
+
+
+        public string Message { get; private set; } = "";
+
+        public List<SupplierDisplayViewModel> supplierVM { get; set; } = new List<SupplierDisplayViewModel>();
+
+        public async Task<IActionResult> OnGet()
+        {
+            try
+            {
+                supplierVM = await _supplierUnitOfWork.SupplierDisplayList();
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
+
+            return Page();
         }
     }
 }

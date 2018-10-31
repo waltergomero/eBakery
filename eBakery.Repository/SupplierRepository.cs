@@ -31,9 +31,10 @@ namespace eBakery.Repository
                     _supplier = new SupplierDisplayModel();
                     _supplier.SupplierId = dataReader.GetValueOrDefault<int>("SupplierId");
                     _supplier.CompanyName = dataReader.GetValueOrDefault<string>("CompanyName");
-                    _supplier.CompanyName = dataReader.GetValueOrDefault<string>("CompanyName");
+                    _supplier.ContactName = dataReader.GetValueOrDefault<string>("ContactName");
                     _supplier.ContactTitle = dataReader.GetValueOrDefault<string>("ContactTitle");
                     _supplier.Address = dataReader.GetValueOrDefault<string>("Address");
+                    _supplier.City = dataReader.GetValueOrDefault<string>("City");
                     _supplier.StateName = dataReader.GetValueOrDefault<string>("StateName");
                     _supplier.ZipCode = dataReader.GetValueOrDefault<string>("ZipCode");
                     _supplier.Email = dataReader.GetValueOrDefault<string>("Email");

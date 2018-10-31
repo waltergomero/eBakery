@@ -652,3 +652,10 @@ thead th {
         font-weight: 400;
         font-size: 12px;
     }
+/* Additional Classes*/
+.centerdiv {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
