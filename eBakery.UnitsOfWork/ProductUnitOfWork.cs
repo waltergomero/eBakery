@@ -36,6 +36,7 @@ namespace eBakery.UnitOfWork
                     UnitsInStock = x.UnitsInStock,
                     UnitsOnOrder = x.UnitsOnOrder,
                     QuantityPerUnit = x.QuantityPerUnit,
+                    Discontinued = x.Discontinued,
                     StatusName = x.StatusName
                 }).ToArray();
                 return productItems.ToList();
@@ -55,13 +56,21 @@ namespace eBakery.UnitOfWork
             pVM.SupplierId = p.SupplierId;
             pVM.UnitPrice = p.UnitPrice;
             pVM.UnitSalePrice = p.UnitSalePrice;
+            pVM.ReorderLevel = p.ReorderLevel;
             pVM.UnitsInStock = p.UnitsInStock;
             pVM.UnitsOnOrder = p.UnitsOnOrder;
             pVM.QuantityPerUnit = p.QuantityPerUnit;
+            pVM.Discontinued = p.Discontinued;
             pVM.StatusId = p.StatusId;
 
             return pVM;
         }
 
+        public async Task SaveProductData(int ProductId, string ProductName, string ProductCode, int SupplierId, int CategoryId, string QuantityPerUnit, decimal UnitPrice, decimal UnitSalePrice,
+                             int UnitsInStock, int UnitsOnOrder, int ReOrderLevel, bool Discontinued, int StatusId, string Notes, string UserEmail)
+        {
+            await _productService.SaveProductData(ProductId, ProductName, ProductCode, SupplierId, CategoryId, QuantityPerUnit, UnitPrice, UnitSalePrice,
+                UnitsInStock, UnitsOnOrder, ReOrderLevel, Discontinued, StatusId, Notes, UserEmail);
+        }
     }
 }

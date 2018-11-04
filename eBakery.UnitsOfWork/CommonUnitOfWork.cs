@@ -92,5 +92,10 @@ namespace eBakery.UnitOfWork
             return selectList.ToList();
         }
 
+        public List<SelectListItem> SupplierDropDownList(List<SupplierViewModel> supplierList, string supplierId, string companyName, int SelSupplierId)
+        {
+            var selectList = new SelectList(supplierList, supplierId, companyName, SelSupplierId);
+            return selectList.ToList();
+        }
     }
 }

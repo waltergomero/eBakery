@@ -6,14 +6,17 @@
 
 
 <div class="row">
-    <div class="col-xl-12">
+    <div class="col-md-12">
         <div class="card mb-12">
-            <form asp-action="AddEditRepair" method="post" asp-controller="Property" class="form-horizontal" id="repairForm">
-                <h6 class="card-header with-elements">
-                    @Model.Title Product Information
-                </h6>
-                <div id="tasks-inner">
-                    <div class="card-body">
+            <div class="list-group">
+                <div class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="d-flex justify-content-between w-100">
+                        <h6 class="mb-1">@Model.Title Product Information</h6>
+                        <a asp-page="./AddEditImages" asp-route-id="0" class="btn btn-coffe btn-sm">View/Add Images</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="AddEditRepair" method="post" asp-controller="Property" class="form-horizontal" id="repairForm">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="ProductVM.ProductId" id="ProductId" />
 
@@ -76,14 +79,15 @@
                         <div class="form-group row">
                             <label asp-for="ProductVM.SupplierId" class="col-md-1 col-form-label">Supplier:</label>
                             <div class="col-md-3">
-                                <input asp-for="ProductVM.SupplierId" id="txtSupplierId" class="form-control" />
-                                <span asp-validation-for="ProductVM.SupplierId" class="text-danger"></span>
+                                <select asp-for="ProductVM.SupplierId" asp-items="@Model.SupplierList" required="required" class="form-control"></select>
                             </div>
 
                             <label asp-for="ProductVM.Discontinued" class="col-md-1 col-form-label-nrq">Discontinued?:</label>
                             <div class="col-md-3">
-                                <input asp-for="ProductVM.Discontinued" id="txtDiscontinued" class="form-control" />
-                                <span asp-validation-for="ProductVM.Discontinued" class="text-danger"></span>
+                                <label class="custom-control custom-checkbox">
+                                    <input asp-for="ProductVM.Discontinued" id="txtDiscontinued" class="custom-control-input" />
+                                    <span class="custom-control-label"></span>
+                                </label>
                             </div>
                             @if (@Model.Title == "Edit")
                             {
@@ -98,14 +102,16 @@
                                 <span style="color:red;" id="spCreateMessage">@Model.Message</span>
                             </div>
                         </div>
-                    </div>
-                    <hr class="m-0">
+
+                        <hr class="m-0">
+
+                        <div class="card-footer" style="text-align:right;">
+                            <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="card-footer" style="text-align:right;">
-                    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

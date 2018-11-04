@@ -18,6 +18,23 @@ namespace eBakery.UnitOfWork
             _supplierService = supplierService;
 
         }
+        public async Task<List<SupplierViewModel>> SupplierList()
+        {
+            var supplier = await _supplierService.SupplierList();
+
+            if (supplier != null)
+            {
+                var supplierItems = supplier.Select(x => new SupplierViewModel
+                {
+                    SupplierId = x.SupplierId,
+                    CompanyName = x.CompanyName
+                }).ToArray();
+                return supplierItems.ToList();
+            }
+            return null;
+        }
+
+
         public async Task<List<SupplierDisplayViewModel>> SupplierDisplayList()
         {
             var supplier = await _supplierService.SupplierDisplayList();
@@ -52,11 +69,18 @@ namespace eBakery.UnitOfWork
             sVM.ContactTitle = x.ContactTitle;
             sVM.Address = x.Address;
             sVM.City = x.City;
+            sVM.ZipCode = x.ZipCode;
             sVM.StateId = x.StateId;
             sVM.Phone = x.Phone;
             sVM.Email = x.Email;
+            sVM.Notes = x.Notes;
 
             return sVM;
+        }
+
+        public async Task SaveSupplierData(int SupplierId, string CompanyName, string ContactName, string ContactTitle, string Address, string City, int StateId, string ZipCode, string Phone, string Email, string Notes)
+        {
+            await _supplierService.SaveSupplierData(SupplierId, CompanyName, ContactName, ContactTitle, Address, City, StateId, ZipCode, Phone, Email, Notes);
         }
     }
 }

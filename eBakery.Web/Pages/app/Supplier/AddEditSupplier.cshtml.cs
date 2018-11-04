@@ -55,5 +55,31 @@ namespace eBakery.Web.Pages.app.Supplier
             return Page();
         }
 
+        public async Task<IActionResult> OnPostAsync()
+        {
+            try
+            {
+                int SupplierId = SupplierVM.SupplierId;
+                string CompanyName = SupplierVM.CompanyName;
+                string ContactName = SupplierVM.ContactName;
+                string ContactTitle = SupplierVM.ContactTitle;
+                string Address = SupplierVM.Address;
+                string City = SupplierVM.City;
+                int StateId = SupplierVM.StateId;
+                string ZipCode = SupplierVM.ZipCode;
+                string Phone = SupplierVM.Phone;
+                string Email = SupplierVM.Email;
+                string Notes = SupplierVM.Notes;
+
+                await this._supplierUnitOfWork.SaveSupplierData(SupplierId, CompanyName, ContactName, ContactTitle, Address, City, StateId, ZipCode, Phone, Email, Notes);
+                return RedirectToPage("./Index");
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+                return Page();
+            }
+        }
+
     }
 }

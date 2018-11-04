@@ -24,6 +24,12 @@ namespace eBakery.Business
             return await _productRepository.ProductById(ProductId);
 
         }
- 
+
+        public async Task SaveProductData(int ProductId, string ProductName, string ProductCode, int SupplierId, int CategoryId, string QuantityPerUnit, decimal UnitPrice, decimal UnitSalePrice,
+                             int UnitsInStock, int UnitsOnOrder, int ReOrderLevel, bool Discontinued, int StatusId, string Notes, string UserEmail)
+        {
+            await _productRepository.SaveProductData(ProductId, ProductName, ProductCode, SupplierId, CategoryId, QuantityPerUnit, UnitPrice, UnitSalePrice,
+                UnitsInStock, UnitsOnOrder, ReOrderLevel, Discontinued, StatusId, Notes, UserEmail);
+        }
     }
 }

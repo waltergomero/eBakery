@@ -13,5 +13,6 @@ namespace eBakery.UnitOfWork
         List<SelectListItem> StatusDropDownList(List<StatusViewModel> statusList, string statusId, string statusName, int selStatusId);
         Task<List<CommonStateListViewModel>> StateList();
         List<SelectListItem> StateDropDownList(List<CommonStateListViewModel> stateList, string stateId, string stateName, int selStateId);
+        List<SelectListItem> SupplierDropDownList(List<SupplierViewModel> supplierList, string supplierId, string companyName, int selSupplierId);
     }
 }

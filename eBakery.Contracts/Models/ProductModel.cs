@@ -13,7 +13,7 @@ namespace eBakery.Contracts.Models
         public string ProductCode { get; set; }
         public int SupplierId { get; set; }
         public int CategoryId { get; set; }
-        public int QuantityPerUnit { get; set; }
+        public string QuantityPerUnit { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal UnitSalePrice { get; set; }
         public int UnitsInStock { get; set; }
@@ -21,6 +21,7 @@ namespace eBakery.Contracts.Models
         public int ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
         public int StatusId { get; set; }
+        public string Notes { get; set; }
         public string CreatedDate { get; set; }
         public string UpdatedDate { get; set; }
         public string CreatedBy { get; set; }
@@ -33,7 +34,7 @@ namespace eBakery.Contracts.Models
         public string ProductCode { get; set; }
         public string SupplierName { get; set; }
         public string CategoryName { get; set; }
-        public int QuantityPerUnit { get; set; }
+        public string QuantityPerUnit { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal UnitSalePrice { get; set; }
         public int UnitsInStock { get; set; }
@@ -41,6 +42,7 @@ namespace eBakery.Contracts.Models
         public int ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
         public string StatusName { get; set; }
+        public string Notes { get; set; }
         public string CreatedDate { get; set; }
         public string UpdatedDate { get; set; }
         public string CreatedBy { get; set; }
